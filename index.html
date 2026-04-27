@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Umme Ibrahim Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  @media (max-width: 680px) {
+    .contact-wrapper { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  /* Left: Contact Options */
+  .contact-options h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+  }
+
+  .contact-options h2 span { color: var(--gold); }
+
+  .contact-options > p {
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(184,146,42,0.14);
+    margin-bottom: 1rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+
+  .contact-method:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(90,60,20,0.1);
+    border-color: var(--gold);
+  }
+
+  .method-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: var(--gold-pale);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .method-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.2rem;
+  }
+
+  .method-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--dark);
+    margin-bottom: 0.2rem;
+  }
+
+  .method-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* Right: Quick Message Form */
+  .contact-form-box {
+    background: white;
+    border-radius: 18px;
+    padding: 2rem;
+    border: 1px solid rgba(184,146,42,0.14);
+    box-shadow: 0 4px 20px rgba(90,60,20,0.07);
+    height: fit-content;
+  }
+
+  .contact-form-box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-form-box > p {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .form-group {
+    margin-bottom: 1.1rem;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--brown);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.03em;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid rgba(184,146,42,0.2);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text);
+    background: var(--cream);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--gold);
+    background: white;
+  }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .send-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .send-btn:hover { background: #2d4a2d; transform: scale(1.02); }
+
+  /* FAQ section */
+  .faq-section {
+    background: white;
+    padding: 3.5rem 2rem;
+  }
+
+  .faq-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .faq-inner h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 0.4rem;
+  }
+
+  .faq-inner h2 span { color: var(--gold); }
+
+  .faq-inner > p {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 2rem;
+  }
+
+  .faq-item {
+    border: 1px solid rgba(184,146,42,0.14);
+    border-radius: 12px;
+    margin-bottom: 0.8rem;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 1rem 1.2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dark);
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .faq-q:hover { background: var(--gold-pale); }
+
+  .faq-q .arrow {
+    font-size: 0.8rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-a {
+    display: none;
+    padding: 0 1.2rem 1rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+    border-top: 1px solid rgba(184,146,42,0.1);
+  }
+
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <a href="index.html" class="logo-wrap">
+    <span class="logo-name">Umme Ibrahim Studio</span>
+    <span class="logo-tagline">Islamic Kids Books & Cards</span>
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="active">Contact</a>
+  </nav>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">🏠 Home</a>
+  <a href="shop.html">🛍️ Shop</a>
+  <a href="blog.html">📖 Blog</a>
+  <a href="contact.html" class="active">📬 Contact</a>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <h1>📬 <span>Contact</span> Us</h1>
+  <p>We'd love to hear from you — orders, questions, collaborations, or just a salam!</p>
+</section>
+
+<!-- ── CONTACT BODY ── -->
+<div class="contact-wrapper">
+
+  <!-- LEFT: Contact Methods -->
+  <div class="contact-options">
+    <h2>Get in <span>Touch</span></h2>
+    <p>The fastest way to reach us is always WhatsApp. We usually reply within a few hours, in sha Allah.</p>
+
+    <a class="contact-method" href="https://wa.me/918444968880?text=Assalamu%20Alaikum!%20I%20have%20a%20question%20about%20Umme%20Ibrahim%20Studio." target="_blank">
+      <div class="method-icon">💬</div>
+      <div>
+        <div class="method-label">Fastest Response</div>
+        <div class="method-title">WhatsApp</div>
+        <div class="method-sub">+91 84449 68880 · Usually replies in a few hours</div>
+      </div>
+    </a>
+
+    <a class="contact-method" href="https://instagram.com/ummeibrahim.studio" target="_blank">
+      <div class="method-icon">📸</div>
+      <div>
+        <div class="method-label">Follow & DM</div>
+        <div class="method-title">Instagram</div>
+        <div class="method-sub">@ummeibrahim.studio · New products, tips & behind the scenes</div>
+      </div>
+    </a>
+
+    <a class="contact-method" href="https://ummeibrahimstudio.substack.com" target="_blank">
+      <div class="method-icon">📖</div>
+      <div>
+        <div class="method-label">Read & Subscribe</div>
+        <div class="method-title">Substack Blog</div>
+        <div class="method-sub">ummeibrahimstudio.substack.com · Free weekly newsletter</div>
+      </div>
+    </a>
+
+    <a class="contact-method" href="https://beacons.ai/ummeibrahim.studio" target="_blank">
+      <div class="method-icon">🔗</div>
+      <div>
+        <div class="method-label">All Links</div>
+        <div class="method-title">Link in Bio</div>
+        <div class="method-sub">beacons.ai/ummeibrahim.studio · All our links in one place</div>
+      </div>
+    </a>
+
+    <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--green-light);border-radius:12px;border:1px solid rgba(58,92,58,0.15);">
+      <p style="font-size:0.82rem;color:var(--green);line-height:1.6;">
+        📦 <strong>Orders:</strong> All orders are placed via WhatsApp. Click "Order on WhatsApp" on any product, or message us directly with your requirements.<br><br>
+        📦 <strong>Delivery:</strong> We deliver physically across all of India. Delivery time is typically 5–7 working days.
+      </p>
+    </div>
+  </div>
+
+  <!-- RIGHT: Quick Message via WhatsApp -->
+  <div class="contact-form-box">
+    <h3>Send a Message 💌</h3>
+    <p>Fill this in and we'll open a pre-written WhatsApp message for you — just press send!</p>
+
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" id="fname" placeholder="e.g. Fatima Shaikh" />
+    </div>
+
+    <div class="form-group">
+      <label>Reason for Contact</label>
+      <select id="reason">
+        <option value="Order enquiry">🛍️ Order Enquiry</option>
+        <option value="Delivery question">📦 Delivery Question</option>
+        <option value="Product question">❓ Product Question</option>
+        <option value="Bulk order">📦 Bulk / Wholesale Order</option>
+        <option value="Collaboration">🤝 Collaboration</option>
+        <option value="General salam">👋 Just saying Salam!</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Your Message</label>
+      <textarea id="msg" placeholder="Type your message here..."></textarea>
+    </div>
+
+    <a class="send-btn" id="sendBtn" href="#" onclick="sendToWhatsApp(event)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Open in WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<!-- ── FAQ ── -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <h2>Frequently Asked <span>Questions</span></h2>
+    <p>Quick answers to common questions</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How do I place an order? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Click "Order on WhatsApp" on any product page. A pre-filled message will open. Just send it and we'll reply within 24 hours with payment and delivery details. JazakAllah Khair!</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Do you deliver all over India? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Yes, Alhamdulillah! We deliver physically across all of India. Typical delivery time is 5–7 working days after payment confirmation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What payment methods do you accept? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">We accept UPI (GPay, PhonePe, Paytm), bank transfer, and cash on delivery in select areas. Payment details are shared over WhatsApp after you place your order.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Can I return or exchange a product? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">If you receive a damaged or incorrect product, please send us photos within 48 hours of delivery via WhatsApp and we will make it right, in sha Allah.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Do you offer bulk or wholesale pricing? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Yes! We offer special pricing for schools, Islamic centres, and bulk orders (10+ items). Please WhatsApp us directly with your requirements and we'll send you a quote.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Are the products suitable for gifting? <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a">Absolutely! Our products make beautiful Eid gifts, aqiqah gifts, and birthday presents for Muslim children. Just mention "gift" in your WhatsApp message and we'll take special care with packaging.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-links">
+    <a href="blog.html">📖 Blog</a>
+    <a href="https://instagram.com/ummeibrahim.studio" target="_blank">📸 Instagram</a>
+    <a href="https://wa.me/918444968880" target="_blank">💬 WhatsApp</a>
+    <a href="contact.html">📬 Contact</a>
+  </div>
+  <p style="margin-bottom:0.4rem;">© 2026 Umme Ibrahim Studio &nbsp;·&nbsp; by Alisha Naz</p>
+  <p style="font-size:0.72rem;opacity:0.6;">Raising a Screen-Free Little Ummah &nbsp;·&nbsp; All India Delivery Available</p>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  function sendToWhatsApp(e) {
+    e.preventDefault();
+    const name = document.getElementById('fname').value.trim() || 'a customer';
+    const reason = document.getElementById('reason').value;
+    const msg = document.getElementById('msg').value.trim();
+    const text = `Assalamu Alaikum! My name is ${name}.\n\nReason: ${reason}\n\n${msg}\n\nJazakAllah Khair 🙏`;
+    const url = 'https://wa.me/918444968880?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
+  }
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
